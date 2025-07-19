@@ -167,13 +167,11 @@ footer {
 }
 
 .heart.burst-heart {
+  animation: none !important;
   position: fixed !important;
   z-index: 99 !important;
   pointer-events: none !important;
 }
 
-.heart.burst-heart {
-  animation: none !important;
-}
 
 
