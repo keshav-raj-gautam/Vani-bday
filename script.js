@@ -22,3 +22,20 @@ function updateCountdown() {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+// JavaScript to add multiple floating hearts randomly
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (4 + Math.random() * 4) + 's';
+  heart.style.opacity = Math.random();
+  heart.style.fontSize = (10 + Math.random() * 10) + 'px';
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000); // remove after animation
+}
+
+setInterval(createHeart, 300);
