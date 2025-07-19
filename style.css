@@ -61,34 +61,42 @@ body {
 
 .heart {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #ff69b4;
-  transform: rotate(-45deg);
+  width: 32px;
+  height: 32px;
+  left: 0;
+  top: 0;
+  z-index: 1;
   animation: floatUp 6s linear infinite;
   opacity: 0.8;
-  border-radius: 15px 15px 0 0;
+  pointer-events: none;
 }
 
-.heart:before,
-.heart:after {
+.heart-shape {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+.heart-shape::before,
+.heart-shape::after {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #ff69b4;
-  border-radius: 50%;
-}
-
-.heart:before {
-  top: -10px;
-  left: 0;
-}
-
-.heart:after {
   top: 0;
-  left: 10px;
+  left: 16px;
+  width: 16px;
+  height: 24px;
+  border-radius: 16px 16px 0 0;
+  background: #ff69b4;
 }
+.heart-shape::before {
+  left: 0;
+  transform: rotate(-45deg);
+}
+.heart-shape::after {
+  left: 16px;
+  transform: rotate(45deg);
+}
+
 
 @keyframes floatUp {
   0% {
