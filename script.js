@@ -39,41 +39,34 @@ const pinks = ["#ffb6da", "#ff6fa0", "#ff7bac", "#ff9cb3", "#fa2888", "#ffaad9",
 function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
-  // Only pink pastel colors
   heart.style.color = pinks[Math.floor(Math.random() * pinks.length)];
   heart.style.left = Math.random() * 98 + "vw";
   heart.style.fontSize = (22 + Math.random() * 14) + "px";
   heart.style.animationDuration = (5 + Math.random() * 4) + "s";
   heart.style.opacity = (0.75 + Math.random() * 0.2);
 
-  // The inner heart shape
   const shape = document.createElement('div');
   shape.classList.add('heart-shape');
   heart.appendChild(shape);
 
-  // Add to hearts-bg so they're behind container
   document.querySelector('.hearts-bg').appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
   }, 9000);
 }
-
 setInterval(createHeart, 100);
 
+// Interactive burst
 function burstHearts(x, y) {
   for (let i = 0; i < 12; i++) {
     const burstHeart = document.createElement('div');
-    burstHeart.classList.add('heart', 'burst-heart');  // <-- HERE
+    burstHeart.classList.add('heart', 'burst-heart');
     burstHeart.style.color = pinks[Math.floor(Math.random() * pinks.length)];
     burstHeart.style.left = (x - 16) + "px";
     burstHeart.style.top = (y - 16) + "px";
     burstHeart.style.fontSize = (14 + Math.random() * 12) + "px";
     burstHeart.style.opacity = 1;
-    // These are now handled in CSS
-    // burstHeart.style.position = "fixed";
-    // burstHeart.style.pointerEvents = "none";
-    // burstHeart.style.zIndex = "20";
 
     const shape = document.createElement('div');
     shape.classList.add('heart-shape');
@@ -81,7 +74,7 @@ function burstHearts(x, y) {
 
     document.body.appendChild(burstHeart);
 
-    // Animate each heart in a different direction
+    // Animate each burst in a different direction
     const angle = Math.random() * 2 * Math.PI;
     const distance = 60 + Math.random() * 40;
     const dx = Math.cos(angle) * distance;
@@ -104,15 +97,9 @@ function burstHearts(x, y) {
   }
 }
 
-
-    setTimeout(() => burstHeart.remove(), 1300);
-  }
-}
-
-// Listen for mouse and touch clicks
+// Burst on mouse/touch
 window.addEventListener('click', e => burstHearts(e.clientX, e.clientY));
 window.addEventListener('touchstart', e => {
   const touch = e.touches[0];
   burstHearts(touch.clientX, touch.clientY);
 });
-
