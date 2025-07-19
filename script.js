@@ -62,20 +62,19 @@ function createHeart() {
 setInterval(createHeart, 100);
 
 function burstHearts(x, y) {
-  const pinks = ["#ffb6da", "#ff6fa0", "#ff7bac", "#ff9cb3", "#fa2888", "#ffaad9", "#fcc0d7", "#ff62a5","#f5a5bc"];
   for (let i = 0; i < 12; i++) {
     const burstHeart = document.createElement('div');
-    burstHeart.classList.add('heart');
+    burstHeart.classList.add('heart', 'burst-heart');  // <-- HERE
     burstHeart.style.color = pinks[Math.floor(Math.random() * pinks.length)];
     burstHeart.style.left = (x - 16) + "px";
     burstHeart.style.top = (y - 16) + "px";
     burstHeart.style.fontSize = (14 + Math.random() * 12) + "px";
     burstHeart.style.opacity = 1;
-    burstHeart.style.position = "fixed";
-    burstHeart.style.pointerEvents = "none";
-    burstHeart.style.zIndex = "20"; // Above background but below main UI
+    // These are now handled in CSS
+    // burstHeart.style.position = "fixed";
+    // burstHeart.style.pointerEvents = "none";
+    // burstHeart.style.zIndex = "20";
 
-    // Create proper heart shape inside
     const shape = document.createElement('div');
     shape.classList.add('heart-shape');
     burstHeart.appendChild(shape);
@@ -100,6 +99,11 @@ function burstHearts(x, y) {
       duration: 950 + Math.random() * 350,
       easing: 'cubic-bezier(.25,1.5,.5,1)'
     });
+
+    setTimeout(() => burstHeart.remove(), 1300);
+  }
+}
+
 
     setTimeout(() => burstHeart.remove(), 1300);
   }
