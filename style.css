@@ -101,3 +101,36 @@ body {
   }
 }
 
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  z-index: 10; /* Ensures countdown is in front */
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff69b4;
+  transform: rotate(-45deg);
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+  border-radius: 15px 15px 0 0;
+  z-index: 1; /* Hearts behind the container */
+}
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #ff69b4;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+
