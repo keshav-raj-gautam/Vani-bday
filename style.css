@@ -1,28 +1,51 @@
 body {
-  background: linear-gradient(135deg, #ffd6ec, #f3c6f6, #c6f2ff, #f5e1ff);
+  background: linear-gradient(135deg, #ffd6ec, #ffe3f7, #ffeaea, #fff7fa);
   min-height: 100vh;
   margin: 0;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  color: #ff69b4;
+  font-family: 'Quicksand', 'Comic Sans MS', cursive, sans-serif;
+  color: #fa2888;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  overflow-x: hidden;
 }
+
+.hearts-bg {
+  position: fixed;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .container {
-  background: #fff0fa77;
+  background: #fff0faEE;
   border-radius: 30px;
   box-shadow: 0 8px 32px 0 rgba(185, 99, 255, 0.18);
   padding: 40px 30px;
   text-align: center;
+  position: relative;
+  z-index: 10;
+  animation: fadeIn 1.2s cubic-bezier(.22,1,.36,1);
 }
+
 h1 {
   margin: 0 0 10px;
   color: #ff62a5;
   font-size: 2.3em;
+  font-family: inherit;
+  letter-spacing: 1px;
+  animation: bounceIn 1.2s;
 }
 h2 {
   margin: 0 0 30px;
-  color: #b08fff;
+  color: #e396e3;
+  font-size: 1.2em;
+  font-family: inherit;
+  font-weight: 500;
+  animation: fadeIn 1.4s;
+}
+.emoji {
   font-size: 1.2em;
 }
 #countdown {
@@ -31,114 +54,109 @@ h2 {
   gap: 18px;
   margin-bottom: 15px;
 }
+
+.countdown-animate .time {
+  animation: bounce 1s;
+}
+
 .time {
   background: #ffe6fa;
   padding: 25px 18px;
   border-radius: 18px;
   box-shadow: 0 4px 16px rgba(255, 182, 193, 0.12);
+  min-width: 70px;
+  transition: transform 0.2s;
+  font-family: inherit;
 }
 .time span {
   display: block;
   font-size: 2.2em;
   color: #f35ab4;
   font-weight: bold;
+  font-family: inherit;
 }
 .time small {
-  color: #b08fff;
+  color: #e396e3;
   font-size: 1em;
+  font-family: inherit;
 }
 footer {
   margin-top: 18px;
   font-size: 1em;
   color: #e396e3;
+  font-family: inherit;
 }
 
-/* Hearts floating background styles */
-body {
-  position: relative;
-  overflow-x: hidden;
+/* Keyframes for Fade and Bounce Animations */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes bounceIn {
+  0% {transform: scale(0.9);}
+  60% {transform: scale(1.03);}
+  100% {transform: scale(1);}
+}
+@keyframes bounce {
+  0% {transform: scale(1);}
+  15% {transform: scale(1.18);}
+  35% {transform: scale(0.95);}
+  55% {transform: scale(1.05);}
+  70% {transform: scale(1);}
+  100% {transform: scale(1);}
 }
 
+/* Floating Heart Styles */
 .heart {
   position: absolute;
   width: 32px;
   height: 32px;
   left: 0;
   top: 0;
-  z-index: 1;
-  animation: floatUp 6s linear infinite;
-  opacity: 0.8;
+  z-index: 2;
   pointer-events: none;
+  opacity: 0.82;
+  will-change: transform, opacity;
+  animation: floatUp 7s linear infinite;
 }
 
 .heart-shape {
-  position: relative;
-  width: 32px;
-  height: 32px;
-  display: block;
+  position: absolute;
+  left: 0; top: 0; width: 32px; height: 32px;
 }
 .heart-shape::before,
 .heart-shape::after {
   content: "";
   position: absolute;
-  top: 0;
-  left: 16px;
-  width: 16px;
-  height: 24px;
-  border-radius: 16px 16px 0 0;
-  background: #ff69b4;
+  width: 18px;
+  height: 28px;
+  background: currentColor;
+  border-radius: 18px 18px 0 0;
 }
 .heart-shape::before {
-  left: 0;
+  left: 7px;
+  top: 0;
   transform: rotate(-45deg);
 }
 .heart-shape::after {
-  left: 16px;
+  left: 15px;
+  top: 0;
   transform: rotate(45deg);
 }
 
-
 @keyframes floatUp {
   0% {
-    transform: translateY(0) rotate(-45deg);
-    opacity: 0.8;
+    transform: translateY(100vh) scale(1) rotate(0deg);
+    opacity: 0.85;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
   }
   100% {
-    transform: translateY(-100vh) rotate(-45deg);
+    transform: translateY(-10vh) scale(1.08) rotate(10deg);
     opacity: 0;
   }
 }
-
-body {
-  position: relative;
-  overflow-x: hidden;
-}
-
-.container {
-  position: relative;
-  z-index: 10; /* Ensures countdown is in front */
-}
-
-.heart {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #ff69b4;
-  transform: rotate(-45deg);
-  animation: floatUp 6s linear infinite;
-  opacity: 0.8;
-  border-radius: 15px 15px 0 0;
-  z-index: 1; /* Hearts behind the container */
-}
-.heart:before,
-.heart:after {
-  content: "";
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #ff69b4;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-
