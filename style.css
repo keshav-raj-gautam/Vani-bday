@@ -165,3 +165,10 @@ footer {
   pointer-events: none;
   position: fixed !important;
 }
+
+.heart.burst-heart {
+  position: fixed !important;
+  z-index: 99 !important;
+  pointer-events: none !important;
+}
+
