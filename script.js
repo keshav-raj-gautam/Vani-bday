@@ -12,7 +12,7 @@ function animateCountdown() {
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = countdownDate - now;
-  
+
   if (distance <= 0) {
     document.getElementById("countdown").innerHTML = "<h2 style='color:#fa2888'>Happy Birthday, Vani! 🎉💖</h2>";
     return;
@@ -21,7 +21,7 @@ function updateCountdown() {
   const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
+
   document.getElementById("days").textContent = days;
   document.getElementById("hours").textContent = hours;
   document.getElementById("minutes").textContent = minutes;
@@ -95,7 +95,6 @@ function burstHearts(x, y) {
     setTimeout(() => burstHeart.remove(), 1300);
   }
 }
-
 
 // Burst on mouse/touch
 window.addEventListener('click', e => burstHearts(e.clientX, e.clientY));
