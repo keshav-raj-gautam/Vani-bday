@@ -27,15 +27,23 @@ updateCountdown();
 function createHeart() {
   const heart = document.createElement('div');
   heart.classList.add('heart');
+
+  // Create the inner heart shape for better proportions
+  const shape = document.createElement('div');
+  shape.classList.add('heart-shape');
+  heart.appendChild(shape);
+
   heart.style.left = Math.random() * 100 + 'vw';
   heart.style.animationDuration = (4 + Math.random() * 4) + 's';
   heart.style.opacity = Math.random();
-  heart.style.fontSize = (10 + Math.random() * 10) + 'px';
+  heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+
   document.body.appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
-  }, 6000); // remove after animation
+  }, 6000);
 }
+
 
 setInterval(createHeart, 100);
