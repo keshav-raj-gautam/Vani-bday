@@ -74,7 +74,6 @@ function burstHearts(x, y) {
 
     document.body.appendChild(burstHeart);
 
-    // Animate each burst in a different direction
     const angle = Math.random() * 2 * Math.PI;
     const distance = 60 + Math.random() * 40;
     const dx = Math.cos(angle) * distance;
@@ -96,6 +95,7 @@ function burstHearts(x, y) {
     setTimeout(() => burstHeart.remove(), 1300);
   }
 }
+
 
 // Burst on mouse/touch
 window.addEventListener('click', e => burstHearts(e.clientX, e.clientY));
