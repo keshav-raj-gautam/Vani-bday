@@ -160,3 +160,8 @@ footer {
     opacity: 0;
   }
 }
+.burst-heart {
+  z-index: 99 !important;
+  pointer-events: none;
+  position: fixed !important;
+}
