@@ -172,3 +172,8 @@ footer {
   pointer-events: none !important;
 }
 
+.heart.burst-heart {
+  animation: none !important;
+}
+
+
