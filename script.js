@@ -38,4 +38,4 @@ function createHeart() {
   }, 6000); // remove after animation
 }
 
-setInterval(createHeart, 300);
+setInterval(createHeart, 100);
